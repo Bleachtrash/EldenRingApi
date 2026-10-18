@@ -40,7 +40,7 @@ struct EntityList
             // Use qstring to narrow results
             for(std::string key : qstring.keys())
             {
-                if(key == "page")
+                if(key == "page" || key == "")
                     continue;
                 if(key.substr(4, key.size()) == "scaling" && this->list[i]->JSON()["scaling"].has(key.substr(0, 3))){
                     check_query = false;
@@ -63,7 +63,14 @@ struct EntityList
                 // If key == name, fuzzy search
                 if(key == "fuzzyName")
                 {
-                    good = rapidfuzz::fuzz::partial_ratio(list[i]->JSON()["name"].dump(), qstring.get(key)) > 70;
+                    std::string name = list[i]->JSON()["name"].dump();
+                    name = name.substr(1, name.size()-2);
+                    for(int i = 0; i < name.size(); i++)
+                        name[i] = tolower(name[i]);
+                    std::string keystr = qstring.get(key);
+                    for(int i = 0; i < keystr.size(); i++)
+                        keystr[i] = tolower(keystr[i]);
+                    good = rapidfuzz::fuzz::partial_ratio(name, keystr) > 80;
                     if(!good)
                         break;
                     continue;
@@ -88,6 +95,9 @@ struct EntityList
             if(good)
                 list_narrow.list.push_back(this->list[i]);
         }
-        return list_narrow.JSON(amount, page_number);
+        crow::json::wvalue res;
+        res["item_count"] = list_narrow.list.size();
+        res["items"] = list_narrow.JSON(amount, page_number);
+        return res;
     }
 };

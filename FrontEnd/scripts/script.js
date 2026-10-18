@@ -171,7 +171,7 @@ async function get_weapons(page){
     const test_json = await test_res.json();
     next_button.style.display = test_json? "" : "none";
     prev_button.style.display = page? "" : "none";
-    for(i of json){
+    for(i of json.items){
         let item = document.createElement("div");
         item.className = "item";
         let item_name = document.createElement("h2");
