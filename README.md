@@ -89,3 +89,22 @@ Contains information about all weapons. The following is an example of an weapon
 
 ## General Parameters
 Every endpoint can be queried with the parameter fuzzyName[fuzzy_name] string, which uses fuzzy searching to match fuzy_name with an item's name. Every endpoint may also use any of an item's first-level values as a parameter using exact string matching (e.g. /weapons?upgrade_material=Smithing Stones).
+## Endpoint Specific Parameters
+Some objects have information that would be useful, but otherwise impossible to query. Thus, some endpoint specific Parameters have been made
+### /weapons
+```
+Weapons may be queried using their attribute scaling using the following parameters
+1. str_scaling
+2. dex_scaling
+3. int_scaling
+4. fai_scaling
+5. arc_scaling
+Each of these parameters takes in a comma seperated list of letters A-F.
+Items are then returned based on if their selected attribute's scaling matches *any* of the specified values
+When using multiple values an item must have a scaling value contained in each of the lists.
+Example 1: /weapons?str_scaling=A,B,C will return any weapon who's scaling.str value is "A", "B", or "C"
+Example 2: /weapons?str_scaling=A,B&dex_scaling=C,D will return any weapon who's scaling.str value is "A" or "B" and scaling.dex value is "C" or "D"
+```
+
+## Acknowledgements
+This project relies on the [CrowCPP library](https://github.com/CrowCpp/Crow), the [Asio library](https://github.com/CrowCpp/Crow), as well as the [Elden Ring Fextralife wiki](https://eldenring.wiki.fextralife.com/Elden_Ring_Wiki).
