@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elden Ring Items</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div id="search_bar">
+            <input type="text" id="search">
+            <select id="search_type">
+                <option value="armor">Armor</option>
+                <option value="weapons">Weapons</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <div id="options">
+            <div id="weapon_options" class="option">
+                <h2>Weapon Type:</h2>
+                <select id="weapon_type">
+                    <option value=""></option>
+                    <option value="Dagger">Daggers</option>
+                    <option value="Straight Sword">Straight Swords</option>
+                    <option value="Colossal Sword">Colossal Swords</option>
+                    <option value="Colossal Weapon">Colossal Weapons</option>
+                    <option value="Thrusting Sword">Thrusting Swords</option>
+                    <option value="Heavy Thrusting Sword">Heavy Thrusting Swords</option>
+                    <option value="Curved Great Sword">Curved Great Swords</option>
+                    <option value="Light Great Sword">Light Great Swords</option>
+                    <option value="Katana">Katanas</option>
+                    <option value="Great Katana">Great Katanas</option>
+                    <option value="Twinblade">Twin Blades</option>
+                    <option value="Axe">Axes</option>
+                    <option value="Hammer">Hammers</option>
+                    <option value="Great Hammer">Great Hammers</option>
+                    <option value="Flail">Flails</option>
+                    <option value="Spear">Spears</option>
+                    <option value="Halberd">Halberds</option>
+                    <option value="Reaper">Reapers</option>
+                    <option value="Whip">Whips</option>
+                </select>
+                <div id="scaling_options">
+                    <h2>Scaling:</h2>
+                    <table>
+                        <tr id="str_scaling">
+                            <td>Strength:</td>
+                        </tr>
+                        <tr id="dex_scaling">
+                            <td>Dexterity:</td>
+                        </tr>
+                        <tr id="fai_scaling">
+                            <td>Faith:</td>
+                        </tr>
+                        <tr id="int_scaling">
+                            <td>Intelligence:</td>
+                        </tr>
+                        <tr id="arc_scaling">
+                            <td>Arcane:</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="upgrade_options">
+                    <h2>Upgrade Materials:</h2>
+                    <select id="upgrade_material">
+                        <option value=""></option>
+                        <option value="Somber Smithing Stones">Somber Smithing Stones</option>
+                        <option value="Smithing Stones">Smithing Stones</option>
+                    </select>
+                </div>
+            </div>
+            <div id="option_buttons">
+                <button id="apply_options">Apply</button>
+                <button id="clear_options">Clear</button>
+            </div>
+        </div>
+        <div id="content">
+            <div id="items"></div>
+            <div id="buttons">
+                <button id="prev_button">Prev</button>
+                <button id="next_button">Next</button>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+</body>
+<script src="scripts/script.js"></script>
+
+</html>
