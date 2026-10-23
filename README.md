@@ -17,7 +17,8 @@ An open CORS API containing information for Elden Ring's items sourced from http
 ---
 ## Building and Running
 1. Clone repository ```git clone https://github.com/Bleachtrash/EldenRingApi```
-2. Build ```g++ main.cpp -o main -Iinclude -static-libgcc -static-libstdc++ -lws2_32 -lwsock32```
+2. Build ```make build``` OR ```g++ main.cpp -o main -Iinclude -static-libgcc -static-libstdc++```
+  - If building on windows, add ```-lws2_32 -lwsock32``` flags to g++ flags
 3. Run
 4. The API is hosted on port :8080
 

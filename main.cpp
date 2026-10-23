@@ -7,9 +7,10 @@
 
 int main()
 {
+    using ::max_align_t;
     crow::App<crow::CORSHandler> app;
     auto &cors = app.get_middleware<crow::CORSHandler>();
-
+    
     EntityList<Weapon> WeaponsList("./data/weapons.json");    
     InitWeaponRoutes(&app, &WeaponsList);
     EntityList<Armor> ArmorsList("./data/armors.json");
