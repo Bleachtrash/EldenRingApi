@@ -1,8 +1,8 @@
+#include <stdlib.h>
 #include <crow.h>
 #include <crow/middlewares/cors.h>
 #include <Entities/Weapons.hpp>
 #include <Entities/Armors.hpp>
-
 int main()
 {
     crow::App<crow::CORSHandler> app;
