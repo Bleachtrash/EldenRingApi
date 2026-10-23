@@ -1,13 +1,28 @@
 # Elden Ring Api
 An open CORS API containing information for Elden Ring's items sourced from https://eldenring.wiki.fextralife.com/Elden_Ring_Wiki
 
+---
+## Directory
+- [Building and Running](#building-and-running)
+- [JSON Response](#json-response)
+- [Endpoints](#endpoints)
+  - [/armor](#armor)
+  - [/talismans](#talismans)
+  - [/weapons](#weapons)
+- [Parameters](#parameters)
+  - [General Parameters](#general-parameters)
+  - [Endpoint Specific Parameters](#endpoint-specific-parameters)
+    - [/weapons](#weapons-1)
+- [Acknowledgements](#acknowledgements)
+---
 ## Building and Running
 1. Clone repository ```git clone https://github.com/Bleachtrash/EldenRingApi```
 2. Build ```g++ main.cpp -o main -Iinclude -static-libgcc -static-libstdc++ -lws2_32 -lwsock32```
 3. Run
 4. The API is hosted on port :8080
 
-## Json Response
+---
+## JSON Response
 Upon being requested, the API will respond with JSON in this form
 ```JSON
 {
@@ -16,6 +31,7 @@ Upon being requested, the API will respond with JSON in this form
 }
 ```
 
+---
 ## Endpoints
 ### /armor
 Contains information about all armor pieces. The following is an example of an armor object's json
@@ -38,6 +54,17 @@ Contains information about all armor pieces. The following is an example of an a
     "robustness": 7,
     "immunity": 20
   }
+}
+```
+### /talismans
+Contains information about all talismans. The following is an example of a weapon object's json
+```JSON
+{
+    "name": "Crimson Amber Medallion",
+    "image": "https://static0.fextralifeimages.com/file/eldenring/a/a6/Crimson_amber_medallion_talisman_elden_ring_wiki_guide_200px.png",
+    "location": "Weeping Peninsula",
+    "weight": "0.3",
+    "effect": "Raises maximum HP by 6%"
 }
 ```
 ### /weapons
@@ -87,27 +114,31 @@ Contains information about all weapons. The following is an example of an weapon
 }
 ```
 
-## General Parameters
-Every endpoint can be queried with the parameter fuzzyName[fuzzy_name] string, which uses fuzzy searching to match fuzy_name with an item's name. Every endpoint may also use any of an item's first-level values as a parameter using exact string matching (e.g. /weapons?upgrade_material=Smithing Stones).
-## Endpoint Specific Parameters
+---
+## Parameters
+### General Parameters
+ Every endpoint can be queried with the parameter fuzzyName[fuzzy_name] string, which uses fuzzy searching to match fuzy_name with an item's name.
+ 
+  Every endpoint may also use any of an item's first-level values as a parameter using exact string matching (e.g. /weapons?upgrade_material=Smithing Stones).
+### Endpoint Specific Parameters
 Some objects have information that would be useful, but otherwise impossible to query. Thus, some endpoint specific Parameters have been made
-### /weapons
-Weapons may be queried using their attribute scaling using the following parameters
-1. str_scaling
-2. dex_scaling
-3. int_scaling
-4. fai_scaling
-5. arc_scaling
-
-Each of these parameters takes in a comma seperated list of letters A-F.
-
-Items are then returned based on if their selected attribute's scaling matches *any* of the specified values.
-
-When using multiple values an item must have a scaling value contained in each of the lists.
-
-Example 1: /weapons?str_scaling=A,B,C will return any weapon who's scaling.str value is "A", "B", or "C".
-
-Example 2: /weapons?str_scaling=A,B&dex_scaling=C,D will return any weapon who's scaling.str value is "A" or "B" and scaling.dex value is "C" or "D".
+#### /weapons
+> Weapons may be queried using their attribute scaling using the following parameters
+> - str_scaling
+> - dex_scaling
+> - int_scaling
+> - fai_scaling
+> - arc_scaling
+> 
+> Each of these parameters takes in a comma seperated list of > letters A-F.
+> 
+> Items are then returned based on if their selected attribute's > scaling matches *any* of the specified values.
+> 
+> When using multiple values an item must have a scaling value > contained in each of the lists.
+> 
+> **Example 1:** /weapons?str_scaling=A,B,C will return any weapon who's scaling.str value is "A", "B", or "C".
+> 
+> **Example 2:** /weapons?str_scaling=A,B&dex_scaling=C,D will return any weapon who's scaling.str value is "A" or "B" and scaling.dex value is "C" or "D".
 
 ## Acknowledgements
 This project relies on the [CrowCPP library](https://github.com/CrowCpp/Crow), the [Asio library](https://github.com/CrowCpp/Crow), as well as the [Elden Ring Fextralife wiki](https://eldenring.wiki.fextralife.com/Elden_Ring_Wiki).
