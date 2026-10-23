@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <crow.h>
 #include <crow/middlewares/cors.h>
 #include <Entities/Weapons.hpp>
